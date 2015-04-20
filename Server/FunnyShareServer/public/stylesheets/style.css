@@ -6,3 +6,21 @@ body {
 a {
   color: #00B7FF;
 }
+
+h1 {
+  color: rgba(71, 235, 42, 0.88);
+}
+
+#MainContent {
+  left: 150px;
+  top: 150px;
+  text-align: center;
+  border: solid red 3px;
+  background-color: blanchedalmond;
+  opacity: .3
+}
+
+#MainContent h1 {
+  color: aqua;
+}
+
