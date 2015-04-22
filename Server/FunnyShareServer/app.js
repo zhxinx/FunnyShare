@@ -10,6 +10,7 @@ var config = require('./config')();
 var routes = require('./controllers/index');
 var users = require('./controllers/users');
 var blog = require('./controllers/blog');
+var admin = require('./controllers/admin')
 
 var app = express();
 
@@ -39,6 +40,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
           app.all('/blog*', attachDB, function(req, res, next) {
             blog.run(req, res, next);
+          });
+
+          app.all('/admin*', attachDB, function(req, res, next) {
+            admin.run(req, res, next);
           });
 
           app.all('/users', attachDB, function(req, res, next) {

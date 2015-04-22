@@ -4,13 +4,32 @@
 extends layout
 
 block content
-   #CreateItem
-      h1 亲，欢迎写博客
-      form (method='post', enctype='multipart/form-data')
-         span 标题
-         input (type='text', name='title', value='')
-         span 博客内容
-         textarea (name='content')
-         span 图片
-         input (type='file', name='picture')
-         input (type='submit', value='submit')
+   .blog-masthead
+      .container
+         nav.blog-nav
+            a.blog-nav-item(href='/blog') 主页
+            a.blog-nav-item.active(href='#') 添加新博客
+            a.blog-nav-item(href='#') Press
+            a.blog-nav-item(href='#') New hires
+            a.blog-nav-item(href='#') About
+   .container
+      h1= title
+      hr
+      .left.form-column
+         input(type='hidden', name='formsubmitted', value='yes')
+         input(type='hidden', name='ID', value='')
+         | 标题:
+         br
+         input(type='text', name='title', value='')
+         br
+         | 内容:
+         br
+         textarea(name='text')
+         br
+         | 图片:
+         br
+         input(type='file', name='picture')
+         br
+         input(type='submit', value='submit')
+         hr
+         br
