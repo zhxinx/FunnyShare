@@ -1,0 +1,16 @@
+//
+   Created by Collins on 4/22/2015.
+
+extends layout
+
+block content
+   #CreateItem
+      h1 亲，欢迎写博客
+      form (method='post', enctype='multipart/form-data')
+         span 标题
+         input (type='text', name='title', value='')
+         span 博客内容
+         textarea (name='content')
+         span 图片
+         input (type='file', name='picture')
+         input (type='submit', value='submit')
