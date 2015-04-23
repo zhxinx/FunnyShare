@@ -12,7 +12,7 @@ module.exports = baseController.extend({
         var self = this;
         model.setDB(req.db);
         var v = new View(res, 'admin');
-        self.form(req, res, function(formMarkup) {
+        self.form(req, res, function() {
             v.render({
                 title: "添加一条新博客"
             });
@@ -23,14 +23,14 @@ module.exports = baseController.extend({
             var data = {
                 title: req.body.title,
                 text: req.body.text,
-                picture: this.handleFileUpload(req),
+                //picture: this.handleFileUpload(req),
                 ID: req.body.ID
             };
-            model[req.body.ID == ''? 'insert': 'update'](data, function(err, objects){
-                res.render('admin-record', {}, function(err, html) {
-                    callback(html);
-                });
+            model[req.body.ID == '' ? 'insert' : 'update'](data, function (err, objects) {
+                callback();
             });
+        } else {
+            callback();
         }
     }
 });

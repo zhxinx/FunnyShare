@@ -21,9 +21,8 @@ module.exports = baseController.extend({
             if (records.length > 0) {
                 for (var i = 0; i < records.length; i++){
                     var record = records[i];
-                    blogArticles = '\
+                    blogArticles += '\
                         <section class="item">\
-                            <img src="' + record.picture + '" alt=""/>\
                             <h2>' + record.title + '</h2>\
                             <p>' + record.text + '</p>\
                             <br class="clear" />\
@@ -34,6 +33,6 @@ module.exports = baseController.extend({
             }
             self.content.blogArticles = blogArticles;
             callback();
-        }, { type: 'blog' });
+        }, { /*type: 'blog' */});
     }
 });
