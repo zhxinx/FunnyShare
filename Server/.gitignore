@@ -1,2 +1,3 @@
-FunnyShareServer/node_modules/*
-FunnyShareServer/public/uploads/*
+FunnyShareServer/node_modules/
+FunnyShareServer/public/uploads/
+FunnyShareServer/data/
