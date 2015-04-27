@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoClient = require('mongodb').MongoClient;
 var http = require('http');
+var multer = require('multer');
 
 var config = require('./config')();
 var routes = require('./controllers/index');
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
+app.use(multer({dest: './admin/'}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'templates'));

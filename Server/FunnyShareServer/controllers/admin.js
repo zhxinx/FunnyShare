@@ -5,6 +5,8 @@
 var baseController = require('./base');
 var View = require('../views/base');
 var model = new (require('../models/contentModel'));
+var fs = require('fs');
+var crypto = require('crypto');
 
 module.exports = baseController.extend({
     name: "Admin",
@@ -23,15 +25,28 @@ module.exports = baseController.extend({
             var data = {
                 title: req.body.title,
                 text: req.body.text,
-                //picture: this.handleFileUpload(req),
+                picture: this.handleFileUpload(req),
                 ID: req.body.ID
             };
-            model[req.body.ID == '' ? 'insert' : 'update'](data, function (err, objects) {
+            model[!req.body.ID ? 'insert' : 'update'](data, function (err, objects) {
                 callback();
             });
         } else {
             callback();
         }
+    },
+    handleFileUpload: function(req) {
+        if (!req.files || !req.files.picture || !req.files.picture.name) {
+            return req.body.currentPicture || {};
+        }
+
+        var data = fs.readFileSync(req.files.picture.path);
+        var filename = req.files.picture.name;
+        var uid = crypto.randomBytes(10).toString('hex');
+        var dir = __dirname + "/../public/uploads/" + uid;
+        fs.mkdirSync(dir, '0777');
+        fs.writeFileSync(dir + "/" + filename, data);
+        return '/uploads/' + uid + "/" + filename;
     }
 });
 

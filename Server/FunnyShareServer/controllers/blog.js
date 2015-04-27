@@ -24,7 +24,13 @@ module.exports = baseController.extend({
                     blogArticles += '\
                         <section class="item">\
                             <h2>' + record.title + '</h2>\
-                            <p>' + record.text + '</p>\
+                            <p>' + record.text + '</p>';
+
+                    if (record.picture.length){
+                        blogArticles +=  ' <img src="' + record.picture + '" alt="" />';
+                    }
+
+                    blogArticles += ' \
                             <br class="clear" />\
                             <hr />\
                         </section>\

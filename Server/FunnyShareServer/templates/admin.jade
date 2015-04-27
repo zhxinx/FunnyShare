@@ -16,7 +16,7 @@ block content
       h1= title
       hr
       .left.form-column
-         form(action="/admin",method="post",enctype="application/x-www-form-urlencoded")
+         form(action="/admin",method="post",enctype="multipart/form-data")
             input(type='hidden', name='formsubmitted', value='yes')
             input(type='hidden', name='ID', value='')
             | 标题:
